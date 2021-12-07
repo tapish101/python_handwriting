@@ -7,4 +7,4 @@ take the txt file and convert it to handwritten text on a page in jpeg format.
 the code have relative path to folders don't change the location of folders leave them as it is.
 only the latest ver of python and pillow library required.
 
-and now every one write in my handwriting(:
+and now every one write in my handwriting:)
