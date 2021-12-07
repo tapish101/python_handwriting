@@ -100,29 +100,8 @@ def pagenum(x):
         image.paste(img,(wid,Pheight),img)
         wid=wid+img.size[0]+charspacing
 
-
-
-def write(txt):
-    global width,leftmargin,insertImg
-    for i in txt:
-        if i=='^':
-            leftmargin=True
-        elif(width>lof-pageW) and i==' ':
-            nextline()
-        elif i=='\n':
-            nextline()
-        elif i=='<':
-            insertImg=True
-        else:
-            if insertImg:
-                insert(i)
-            else:
-                if i.isalpha():
-                    txtTOimg(str(i))
-                else:
-                    txtTOimg(i)
-
-
+        
+        
 
 # takes the whole text at ones and iterate over it to pass each char to paste on background page image
 def txtTOimg(txt):
