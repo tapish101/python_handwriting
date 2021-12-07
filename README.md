@@ -1,4 +1,6 @@
 # python_handwriting
+text to hand written images output
+
 take the txt file and convert it to handwritten text on a page in jpeg format.
 
 # whatever you write in input.txt file no matter how long and the formating also kept same
