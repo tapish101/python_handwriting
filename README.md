@@ -10,3 +10,5 @@ the code have relative path to folders don't change the location of folders leav
 only the latest ver of python and pillow library required.
 
 and now every one write in my handwriting:)
+
+for more and better instructions check my instructable here https://www.instructables.com/Text-to-Handwriting
