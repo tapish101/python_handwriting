@@ -217,11 +217,16 @@ def txtTOimg(txt):
             width=width+img.size[0]+charspacing
         
 
-#open the text file and pass whole text to text variable
-file=open('input.txt')
-text=file.read()
-
-txtTOimg(text)
-
-#saves the latest open page img and program ends here
-newpage(end=True)
+try:
+    #open the text file and pass whole text to text variable
+    file=open('input.txt')
+    text=file.read()
+    txtTOimg(text)
+    #saves the latest open page img and program ends here
+    newpage(end=True)
+except FileNotFoundError:
+    print("input.txt file not found.\nCreated the file\nInput text in input.txt file.")
+    with open('input.txt', 'w') as f:
+        f.write('Write text into this file.')
+except Exception:
+    print('Something went wrong with program.')
