@@ -203,7 +203,11 @@ def txtTOimg(txt):
             writeonleft(i)
         else:
             rand=random.randint(0,4)
-            img=Image.open('source/'+id+'/data'+str(rand)+'/'+i+'.png')
+            try:
+                img=Image.open('source/'+id+'/data'+str(rand)+'/'+i+'.png')
+            except Exception:
+                img=Image.open('source/'+id+'/data'+str(rand)+'/space.png')
+                print("char not found,",i)
             if tilt:
                 size=list(img.size)
                 scl=random.uniform(-0.1,0.1)
@@ -221,12 +225,13 @@ try:
     #open the text file and pass whole text to text variable
     file=open('input.txt')
     text=file.read()
-    txtTOimg(text)
-    #saves the latest open page img and program ends here
-    newpage(end=True)
 except FileNotFoundError:
     print("input.txt file not found.\nCreated the file\nInput text in input.txt file.")
     with open('input.txt', 'w') as f:
         f.write('Write text into this file.')
 except Exception:
     print('Something went wrong with program.')
+finally:
+    txtTOimg(text)
+    #saves the latest open page img and program ends here
+    newpage(end=True)
