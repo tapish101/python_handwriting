@@ -1,23 +1,19 @@
-                         #32 rows in one page
 
-                         #for input.txt file
                 #'^' defines writing on left of the margin
                          #'^~' means new page
 
 
 id='tapish'    #name of folder that contains data folders
-               #diff name to use diff hand writing 
 
-#for more randomness like tilting the image and scaling the img
-#it's upto your prefrences
-tilt=True
+#for more randomness
+tilt=False
 
 
 
 from PIL import Image
 import random
 
-#these variable are to be changes accordingly
+
 
 #no. of pixels from left and right respectively on page from where words starts to paste
 pageW=267  
@@ -38,7 +34,7 @@ nof=5
 #max writable pixel length on a line
 lof=1720
 
-                  #till here
+
 
 
 
@@ -51,6 +47,10 @@ image=Image.open('source/image.jpeg')
 width=pageW 
 height=pageH
 margin=fromleft+random.randint(0,13)
+
+char_map={'^': '^', ' ': 'space', '&': 'and', '*': 'astric', ',': 'comma', '$': 'dollar', '"': 'dquote', '!': 'exclam', '/': 'f_slash', '#': 'hash', '-': 'minus', '%': 'percent', '+': 'plus', "'": 'quote', '_': 'uscore', '(': 'sbracket_l', ')': 'sbracket_r', '.': 'stop', '`': 'ajeeb', '@': 'at', '[': 'bbracket_l', ']': 'bbracket_r', ':': 'colon', '{': 'curly_l', '}': 'curly_r', '|': 'danda', '=': 'equal', '>': 'greaterthan', '<': 'lessthan', '?': 'que', ';': 'semicolon', '~': 'slant', '\\t': 'tab'}
+
+
 #responsible to write on left to margin
 def writeonleft(t):
     global leftmargin,margin
@@ -122,82 +122,26 @@ def txtTOimg(txt):
     global width,leftmargin
     for i in txt:
 
+        if i.isnumeric():
+            i=str(i)
+        elif i=="\n":
+            i='enter'
+        elif not i.isalpha():
+            i=char_map[i]
+
+
         if i=='^':
             leftmargin=True
             continue
-        elif i==' ':
-            i='space'
+        elif i=='space':
             if(width>1700-267-50):
                 nextline()
                 continue
-        elif i=='\n':
+        elif i=='enter':
             nextline()
             continue
-        elif i=='&':
-            i='and'
-        elif i=='*':
-            i='astric'
-        elif i==',':
-            i='comma'
-        elif i=='$':
-            i='dollar'
-        elif i=='"':
-            i='dquote'
-        elif i=='!':
-            i='exclam'
-        elif i=='/':
-            i='f_slash'
-        elif i=='#':
-            i='hash'
-        elif i=='-':
-            i='minus'
-        elif i=='%':
-            i='percent'
-        elif i=='+':
-            i='plus'
-        elif i=="'":
-            i='quote'
-        elif i=='_':
-            i='uscore'
-        elif i=='(':
-            i='sbracket_l'
-        elif i==')':
-            i='sbracket_r'
-        elif i=='.':
-            i='stop'
-        elif i.isalpha():
-            i=str(i)
-        elif i=='`':
-            i='ajeeb' 
-        elif i=='@':
-            i='at'
-        elif i=='[':
-            i='bbracket_l'
-        elif i==']':
-            i='bbracket_r'
-        elif i==":":
-            i='colon'
-        elif i=='{':
-            i='curly_l'
-        elif i=='}':
-            i='curly_r'
-        elif i=='|':
-            i='danda'
-        elif i=='=':
-            i='equal'
-        elif i=='>':
-            i='greaterthan'
-        elif i=='<':
-            i='lessthan'
-        elif i=='?':
-            i='que'
-        elif i==';':
-            i='semicolon'
-        elif i=="~":
-            i='slant'
-        elif i=='\t':
-            i='tab'
         
+
 
         if(leftmargin):
             writeonleft(i)
